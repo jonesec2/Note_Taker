@@ -2,7 +2,7 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs")
-const db = require("./db.json")
+const db = require("./db/db")
 
 // console.log(db)
 
@@ -22,11 +22,11 @@ const notes = []
 // HTML Routes
 //=================================================
 app.get("/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "notes.html"));
+    res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
 
 app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "index.html"));
+    res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
 
