@@ -2,7 +2,7 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs")
-const db = require("./db/db")
+const db = require("./db/db.json")
 
 // console.log(db)
 
@@ -13,6 +13,7 @@ const PORT = 3000;
 //=================================================
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, './public')));
 
 
 //=================================================
