@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, './public')));
 
 
 //=================================================
-const notes = []
+// const notes = []
 
 
 // HTML Routes
@@ -35,24 +35,20 @@ app.get("*", function (req, res) {
 // API routes
 //=================================================
 app.get("/api/notes", function (req, res) {
+    console.log(res.json(db))
     return res.json(db);
 });
 
 app.post("/api/notes", function (req, res) {
     let newNote = req.body;
 
-    // Using a RegEx Pattern to remove spaces from newNote
-    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-    // newNote.routeName = newNote.name.replace(/\s+/g, "").toLowerCase();
+    db.push(newNote);
 
-    console.log(newNote);
-
-    fs.appendFile('db.json', newNote, function(err) {
+    fs.writeFile('./db/db.json', JSON.stringify(db), function(err) {
         if (err) throw err;
+        console.log("Note added!")
     })
-    // characters.push(newNote);
 
-    res.json(newNote);
 });
 
 app.delete("/api/notes/:id", function (req, res) {
