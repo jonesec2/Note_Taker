@@ -40,7 +40,7 @@ app.get("/api/notes", function (req, res) {
 
 app.post("/api/notes", function (req, res) {
     let newNote = req.body;
-    newNote['id'] = db.length + 1
+    newNote['id'] = db.length;
     console.log(newNote)
     db.push(newNote);
 
@@ -55,10 +55,15 @@ app.post("/api/notes", function (req, res) {
 app.delete("/api/notes/:id", function (req, res) {
     
     const chosenNote = req.params.id;
-    console.log(db[1].id)
     console.log(chosenNote)
+    console.log(db);
+    // console.log(db[1].id)
+    // console.log(chosenNote)
     // let newArray = db.remove(function(el) {return el.id === chosenNote})
     // console.log(JSON.stringify(newArray))
+    
+    db.splice(chosenNote, 1);
+    console.log(db);
 
     // db.push(newArray);
 
