@@ -55,7 +55,9 @@ app.post("/api/notes", function (req, res) {
 app.delete("/api/notes/:id", function (req, res) {
     
     const chosenNote = req.params.id;
-    console.log(chosenNote)
+    const chosenText = req.params.text;
+    console.log(chosenText);
+    console.log(chosenNote);
     console.log(db);
     // console.log(db[1].id)
     // console.log(chosenNote)
